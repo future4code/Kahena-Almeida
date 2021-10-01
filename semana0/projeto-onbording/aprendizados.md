@@ -1,0 +1,2 @@
+# Começamos a semana com o pé direito!
+Nessa semana de onbording da Labenu, aprendi sobre diversidade e inclusão, sobre a importância das softskills, e me senti acolhida em uma área profissional que **entende esse valor**. Além claro de entender melhor sobre terminal e git!
