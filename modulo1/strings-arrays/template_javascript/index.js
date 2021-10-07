@@ -39,7 +39,7 @@ console.log(comidaPreferida)
 
 */
 
-// EXERCÍCIO 03
+// EXERCÍCIO 03 - Correção
 
 const listaDeTarefas = []
 const listaDeTarefas1 = prompt("Que tarefa precisa fazer pela manhã?")
