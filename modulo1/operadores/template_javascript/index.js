@@ -3,7 +3,7 @@
 
 "a. ", false
 "b. ", false
-"c. ", true // a letra b estava falsa, então  !resultado  será uma negação, ou seja ficará positivo, só que dentro do (bool1 || bool2)  se tem um verdadeiro e o outro falso e ||  significa ou, não faz sentido, como se nao tivesse resposta certa
+"c. ", true
 "d. ", boolean
 
 // EXERCÍCIO 02
