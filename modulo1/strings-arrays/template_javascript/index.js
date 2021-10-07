@@ -37,12 +37,24 @@ const qualSuaComidaPreferida = prompt ("Qual sua comida preferida?")
 comidaPreferida[1] = qualSuaComidaPreferida
 console.log(comidaPreferida)
 
-// EXERCÍCIO 03
 */
 
-let listaDeTarefas = ['tarefa1', 'tarefa2', 'tarefa3']
-const tarefa1 = prompt("Que tarefa precisa fazer pela manhã?")
-const tarefa2 = prompt("E pela tarde?")
-const tarefa3 = prompt("E pela noite?")
+// EXERCÍCIO 03
 
-console.log($listaDeTarefas)
+const listaDeTarefas = []
+const listaDeTarefas1 = prompt("Que tarefa precisa fazer pela manhã?")
+const listaDeTarefas2 = prompt("E pela tarde?")
+const listaDeTarefas3 = prompt("E pela noite?")
+
+listaDeTarefas.push(listaDeTarefas1)
+listaDeTarefas.push(listaDeTarefas2)
+listaDeTarefas.push(listaDeTarefas3)
+
+console.log(listaDeTarefas)
+
+const realizada = prompt("Qual tarefa realizou? 0, 1 ou 2?")
+
+listaDeTarefas.splice(Number(realizada), 1) 
+console.log(listaDeTarefas)
+
+
