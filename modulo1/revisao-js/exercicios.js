@@ -16,23 +16,26 @@ function retornaArrayInvertido(array) {
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
     array.sort(function(a, b) {
-    return (a - b)})
+    return (a - b)
+    })
+    return array
 }
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-    let novoArray = []
-    for (let index = 0; index < array.length; index++) {
-        if((array[index] % 2) == 0){
-            novoArray.push(array[index])
-        }
-    }
-    return novoArray
+    array.filter(value % 2 == 0)
+    return
 }
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+    let novoArray = []
+    for (let index = 0; index < array.length; index++) {
+        if((array[index] % 2) == 0){
+            novoArray.push(array[index] * array[index])
+        }
+    }
+    return novoArray
 }
 
 // EXERCÍCIO 06
