@@ -105,37 +105,87 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+    if (array.length <= 2) {
+        return array
+    } else {
+    array.sort((a, b) => a - b)
+    console.log (array)
+
+
+    array.pop()
+    array.shift()
+    console.log(array)
+
+    
+    let segundoMaior = array[array.length - 1]
+    let segundoMenor = array[0]
+
+    const mensagem = [segundoMaior, segundoMenor]
+    return mensagem
+    }
 }
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-   
+   let mensagem = `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
+   return mensagem
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+   const novoObjeto = {...pessoa, nome:'ANÔNIMO'}
+   return novoObjeto
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
+    let arrayPessoasAutorizadas = []
+    for (let index = 0; index < pessoas.length; index++) {
+        if (pessoas[index].idade > 14 && pessoas[index].idade < 60 && pessoas[index].altura > 1.5) {
+            arrayPessoasAutorizadas.push(pessoas[index])
+        } 
+    } 
+   return arrayPessoasAutorizadas
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    let arrayPessoasNaoAutorizadas = []
+    for (let index = 0; index < pessoas.length; index++) {
+        if (pessoas[index].idade <= 14) {
+            arrayPessoasNaoAutorizadas.push(pessoas[index])
+        } else if (pessoas[index].idade > 60) {
+            arrayPessoasNaoAutorizadas.push(pessoas[index])
+        } else if (pessoas[index].altura < 1.5) {
+            arrayPessoasNaoAutorizadas.push(pessoas[index])
+        } 
+    } 
+   return arrayPessoasNaoAutorizadas
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    contas[0].saldoTotal = 500
+    contas[0].compras = []
+    contas[1].saldoTotal = 6260
+    contas[1].compras = []
+    contas[2].saldoTotal = -3340
+    contas[2].compras = []
+    contas[3].saldoTotal = -1900
+    contas[3].compras = []
+    contas[4].saldoTotal = 1300
+    contas[4].compras = []
+    return contas
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    consultas.sort(function(a, b){
+        if(a.nome < b.nome) { return -1; }
+        if(a.nome > b.nome) { return 1; }
+        return 0;
+    })
+    return consultas
 }
 
 // EXERCÍCIO 15B
