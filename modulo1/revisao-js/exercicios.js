@@ -71,11 +71,35 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+    const array = []
+    let contagem = 0
+    while (array.length < n) {
+        if ((contagem % 2) == 0) {
+        array.push(contagem)
+        }
+        contagem++        
+    }
+    return array
 }
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
+    if (ladoA == ladoB && ladoB == ladoC && ladoC == ladoA) {
+        let mensagem = `Equilátero`
+        return mensagem
+    } else if (ladoA == ladoB && ladoB !== ladoC && ladoC !== ladoA) {
+        let mensagem = `Isósceles`
+        return mensagem
+    } else if (ladoA !== ladoB && ladoB == ladoC && ladoC !== ladoA) {
+        let mensagem = `Isósceles`
+        return mensagem
+    } else if (ladoA == ladoC && ladoC !== ladoB && ladoB !== ladoA ) {
+        let mensagem = `Isósceles`
+        return mensagem
+    } else if (ladoA !== ladoC && ladoB !== ladoA && ladoC !== ladoB) {
+        let mensagem = `Escaleno`
+        return mensagem
+    }    
 
 }
 
