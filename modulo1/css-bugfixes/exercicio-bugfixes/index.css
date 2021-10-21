@@ -100,8 +100,10 @@ div:last-child {
     text-align: center;
 }
 
-table {
+table td {
     width: 60%;
+    align-items: center;
+    padding: 50px;
 }
 
 td button {
