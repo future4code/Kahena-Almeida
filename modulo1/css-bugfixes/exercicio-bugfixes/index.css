@@ -135,6 +135,7 @@ td button:hover {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    margin-left: 50px;
 }
 
 #back-button:hover {
