@@ -26,16 +26,14 @@ button:focus {
 }
 
 img {
-    width: 100px;
+    height: 90px;
+    width: 90px;
 }
 
 div>p:first-child {
     display: inline;
 }
 
-div img {
-    background: black;
-}
 
 .botao-amarelo {
     background-color: #ffaf43;
