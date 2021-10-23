@@ -7,4 +7,4 @@ function calculaSalario(qtdeCarrosVendidos, valorTotalVendas) {
   return salariofinal
 
 }
-```
+```s
