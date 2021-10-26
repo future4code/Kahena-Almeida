@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: mediumvioletred;
+    display: flex;
+    height: 200px;
+}
+
+.corpo {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.area-cards{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.img-logo {
+    width: 70px;
+    height: 70px;
+    margin: 60px;
+    
+}
+
+.logo {
+    margin-top: 60px;
+    margin-right: 30px;
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+}
+
+button {
+    position: relative;
+    top: 65px;
+    left: 3600px;
+    height: 70px;
+    width: 140px;
+    padding: 10px;
+    font-size: 40px;
+    text-align: center;
+    
+}
+
+menu {
+    background-color: #f2d0e0; 
+    width: 900px;
+    height: 2650px;
+    margin-top: 0px;
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: top;
+    
+}
+
+menu li {
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    height: 200px;
+
+    
+}
+
+menu h2 {
+    font-size: 60px;
+    left: 15px;
+    text-align: left;
+    font-weight: bold;
+    margin: auto 20px;    
+    
+}
+
+.img-menu {
+    width: 70px;
+    height: 70px;
+    margin: auto 60px;
+    
+}
+
+.img-seta-menu {
+    width: 70px;
+    height: 70px;
+    margin: auto 30px auto auto;
+    right: 30px;
+}
+
+.area-de-produtos{
+    position: relative;
+    display: grid;
+    vertical-align: top;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;  
+    row-gap: 60px;
+    column-gap: 60px;
+    justify-items: stretch;
+    width: 3000px;
+    height: 2500px;
+    padding: 60px;
+    margin:0;
+    align-items: center;
+    
+}
+
+.icone-de-produto {
+    font-size: 60px;
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0px darkgray;
+    width: 950px;
+    text-align: center;
+}
+
+.bolo-icone {
+    width: 950px;
+    height: 950px;
+}
+
+footer {
+    background-color: mediumvioletred;
+    height: 150px;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 75px;
+    margin: 0;
+}
