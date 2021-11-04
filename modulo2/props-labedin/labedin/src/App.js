@@ -24,46 +24,51 @@ const CardGrandeStyle = styled.div`
     h4 {
       margin-bottom: 15px;
     }
-    div {
-      display: flex;
-      flex-direction: column;
-      justify-items: flex-start;
-    }
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    border: none;
   }
 `
 
 const ImageButtonStyle = styled.div`
-  display: flex;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 50px;
-  width: 200px;
-  padding: 15px 30px;
-  margin: 10px auto;
-  img {
-    width: 30px;
-    margin-right: 10px;
+  div {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50px;
+    width: 200px;
+    padding: 15px 30px;
+    margin: 10px auto;
+    img {
+      width: 30px;
+      margin-right: 10px;
+    }
   }
 `
 const CardPequenoStyle = styled.div`
-  display: flex;
-  align-items: center;
-  border: 1px solid black;
-  padding: 20px 10px;
-  margin-bottom: 10px;
-  height: 100px;
-  img {
-    width: 70px;
-    margin-right: 10px;
-    border-radius: 50%;
-  }
-  h4 {
-    margin-bottom: 15px;
-  }
   div {
     display: flex;
-    flex-direction: row;
-    justify-items: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+    height: 100px;
+    img {
+      width: 70px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+    h4 {
+      margin-bottom: 15px;
+    }
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-items: flex-start;
+    }
   }
 `
 
