@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
-import Post from './components/Post/Post';
+import Post from './components/Post/Post'
 
 const MainContainer = styled.div`
   display: flex;
@@ -12,15 +12,31 @@ const MainContainer = styled.div`
 class App extends React.Component {
   render() {
     return (
-      <MainContainer>
-        <Post
-          nomeUsuario={'paulinha'}
-          fotoUsuario={'https://picsum.photos/50/50'}
-          fotoPost={'https://picsum.photos/200/150'}
-        />
-      </MainContainer>
-    );
+      <div>
+        <MainContainer>
+          <Post
+            nomeUsuario={'Paulinha'}
+            fotoUsuario={'https://picsum.photos/50/50'}
+            fotoPost={'https://picsum.photos/200/150'}
+          />
+        </MainContainer>
+        <MainContainer>
+          <Post
+            nomeUsuario={'Patrícia'}
+            fotoUsuario={'https://picsum.photos/60/60'}
+            fotoPost={'https://picsum.photos/210/150'}
+          />
+        </MainContainer>
+        <MainContainer>
+          <Post
+            nomeUsuario={'Joaquim'}
+            fotoUsuario={'https://picsum.photos/70/70'}
+            fotoPost={'https://picsum.photos/220/150'}
+          />
+        </MainContainer>
+      </div>
+    )
   }
 }
 
-export default App;
+export default App
