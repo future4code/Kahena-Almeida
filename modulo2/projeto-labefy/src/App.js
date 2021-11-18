@@ -1,19 +1,9 @@
 import React from 'react'
-import style from 'styled-components'
+import { AreaTotal } from './Styles'
 import TelaInicial from './components/TelaInicial'
 import ListaPlaylists from './components/ListaPlaylists'
 import ListaMusicas from './components/ListaMusicas'
 import ReproduzirMusica from './components/ReproduzirMusica'
-
-const FundoPadrao = style.div`
-margin:0,
-padding:0,
-background-image: url(${props => props.img});,
-background-repeat: no-repeat,
-background-attachment: fixed, 
-background-size: cover,
-}
-`
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,6 +13,8 @@ export default class App extends React.Component {
     }
     this.irParaTelaInicial = this.irParaTelaInicial.bind(this)
     this.irParaPlaylists = this.irParaPlaylists.bind(this)
+    this.irParaMusicas = this.irParaMusicas.bind(this)
+    this.irParaReproducao = this.irParaReproducao.bind(this)
   }
 
   escolheTela = () => {
@@ -57,16 +49,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <FundoPadrao
-          img={
-            'https://static.vecteezy.com/ti/vetor-gratis/p1/2834527-light-orange-vector-background-with-lines-colorful-gradiente-illustration-with-abstract-flat-lines-template-for-your-ui-design-vetor.jpg'
-          }
-        >
-          {this.escolheTela()}
-        </FundoPadrao>
-      </div>
-    )
+    return <AreaTotal>{this.escolheTela()}</AreaTotal>
   }
 }
