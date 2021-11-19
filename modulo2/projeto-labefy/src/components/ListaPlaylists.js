@@ -5,7 +5,7 @@ export default class ListaPlaylists extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      novaPlaylist: '',
+      novaPlaylist: {nome: '', , id: listaPlaylists.lenght},
       listaPlaylists: []
     }
     this.handleImputNome = this.handleImputNome.bind(this)
@@ -31,9 +31,9 @@ export default class ListaPlaylists extends React.Component {
   // }
 
   playlistAtual = () => {
-    if (this.state.listaPlaylists.length !== 0) {
-      return axios
-        .get(
+    // if (this.state.listaPlaylists.length !== 0) {
+    //   return 
+        axios.get(
           'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
           {
             headers: {
@@ -47,9 +47,32 @@ export default class ListaPlaylists extends React.Component {
     }
   }
 
-  handleImputNome(e) {
+  criarPlaylist = () => {
+    // if (this.state.listaPlaylists.length !== 0) {
+    //   return 
+    const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
+    const body = {
+      nome: this.state.nome
+    }
+    axios.post(url, body, {
+        headers: {
+          Authorization: 'Kahena-Carvers'
+        }
+    })
+    .then((res) => {
+          alert("Nova playlist criada com sucesso!")
+          this.setState({nome:''})
+        })
+    .catch((err) => {
+      alert(err.response.data.message)
+    })    
+    
+    }
+  
+
+  handleImputNome = (e) => {
     this.setState({
-      novaPlaylist: e.target.value
+      novaPlaylist: {nome: e.target.value}
     })
   }
 
@@ -73,7 +96,7 @@ export default class ListaPlaylists extends React.Component {
     const { novaPlaylist } = this.state.novaPlaylist
     return (
       <div>
-        {/* {playlistAtual/} */}
+        {playlistAtual/}
         <h2>Nova playlist:</h2>
         <input
           type="text"
