@@ -8,12 +8,6 @@ export const AreaTotal = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
-  button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
   input {
     border: 1px;
     background: transparent;
@@ -35,6 +29,7 @@ export const AreaTotal = styled.div`
     text-align: center;
   }
 `
+
 export const Header = styled.h1`
   color: #fff;
   background-color: #282c34;
@@ -46,4 +41,22 @@ export const Header = styled.h1`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`
+export const CardItem = styled.li`
+  border: 1px solid white;
+  padding: 10px;
+  margin: 10px;
+  width: 150px;
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1fr;
+  justify-content: space-between;
+`
+
+export const Colunas = styled.ul`
+  max-width: 100vw;
+  max-height: 70vh;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
 `

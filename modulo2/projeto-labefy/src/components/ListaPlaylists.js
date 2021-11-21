@@ -1,110 +1,124 @@
 import axios from 'axios'
 import React from 'react'
+import { CardItem, Colunas } from '../Styles'
 
 export default class ListaPlaylists extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      novaPlaylist: {nome: '', , id: listaPlaylists.lenght},
+      novaPlaylist: '',
       listaPlaylists: []
     }
-    this.handleImputNome = this.handleImputNome.bind(this)
+    this.handleNome = this.handleNome.bind(this)
+    this.playlistAtual = this.playlistAtual.bind(this)
   }
 
-  // handleNome = e => {
-  //   this.setState({ salvarNovaPlaylist: e.target.value })
-  // }
-
-  // criarPlaylist = () => {
-  //   ListaPlaylists([...ListaPlaylists, salvarNovaPlaylist])
-  // }
-
-  // CriarPlaylist = novoNome => {
-  //   const novaPlaylist = ListaPlaylists.find(novoNome) {
-  //     if (novoNome ===) {
-  //       alert('Este nome de playlist já existe!')
-  //     } else {
-  //       alert('Playlist criada com sucesso!')
-
-  //     }
-  //   }
-  // }
+  componentDidMount() {
+    this.playlistAtual()
+  }
 
   playlistAtual = () => {
-    // if (this.state.listaPlaylists.length !== 0) {
-    //   return 
-        axios.get(
-          'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
-          {
-            headers: {
-              Authorization: 'Kahena-Carvers'
-            }
+    axios
+      .get(
+        'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
+        {
+          headers: {
+            Authorization: 'Kahena-Mansano-Carvers'
           }
-        )
-        .then(response => {
-          console.log(response.data.result.list)
-        })
-    }
+        }
+      )
+      .then(res => {
+        console.log('res', res.data)
+        this.setState({ listaPlaylists: res.data.result.list })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
-  criarPlaylist = () => {
-    // if (this.state.listaPlaylists.length !== 0) {
-    //   return 
-    const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
-    const body = {
-      nome: this.state.nome
-    }
-    axios.post(url, body, {
-        headers: {
-          Authorization: 'Kahena-Carvers'
-        }
-    })
-    .then((res) => {
-          alert("Nova playlist criada com sucesso!")
-          this.setState({nome:''})
-        })
-    .catch((err) => {
-      alert(err.response.data.message)
-    })    
-    
-    }
-  
-
-  handleImputNome = (e) => {
+  handleNome = e => {
     this.setState({
-      novaPlaylist: {nome: e.target.value}
+      novaPlaylist: e.target.value
     })
   }
 
-  novaPlaylist = async () => {
+  criarNovaPlaylist = () => {
+    const url =
+      'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
     const body = {
-      name: this.setState.novaPlaylist
+      name: this.state.novaPlaylist
     }
-    const response = await axios.post(
-      'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
-      body,
-      {
+    axios
+      .post(url, body, {
         headers: {
-          Authorization: 'Kahena-Carvers'
+          Authorization: 'Kahena-Mansano-Carvers'
         }
-      }
-    )
-    console.log(response)
+      })
+      .then(res => {
+        alert('Playlist criada com sucesso!')
+        this.playlistAtual()
+      })
+      .catch(err => {
+        alert('Este nome de playlist já existe!')
+      })
   }
+
+  deletarPlaylist = id => {
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`
+    axios
+      .delete(url, {
+        headers: {
+          Authorization: 'Kahena-Mansano-Carvers'
+        }
+      })
+      .then(res => {
+        alert('Playlist deletada!')
+        this.playlistAtual()
+      })
+      .catch(err => {
+        alert('Ocorreu um erro!')
+      })
+  }
+
+  // criarNovaPlaylist = async () => {
+  //       const body = {
+  //     name: this.setState.novaPlaylist
+  //   }
+  //   const response = await axios.post(
+  //     'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
+  //     body,
+  //     {
+  //       headers: {
+  //         Authorization: 'Kahena-Carvers'
+  //       }
+  //     }
+  //   )
+  //   console.log(response)
+  // }
 
   render() {
-    const { novaPlaylist } = this.state.novaPlaylist
+    const mostrarLista = this.state.listaPlaylists.map(item => {
+      return (
+        <CardItem key={item.id}>
+          {item.name}
+          <button onClick={() => this.deletarPlaylist(item.id)}>x</button>
+        </CardItem>
+      )
+    })
+
     return (
       <div>
-        {playlistAtual/}
+        <Colunas>{mostrarLista}</Colunas>
         <h2>Nova playlist:</h2>
         <input
           type="text"
           placeholder="Nome da playlist"
-          value={novaPlaylist}
-          onChange={this.setState.novaPlaylist}
+          value={this.state.novaPlaylist}
+          onChange={this.handleNome}
         ></input>
-        <button onClick={this.novaPlaylist}>Criar</button>
+        <button type="button" onClick={this.criarNovaPlaylist}>
+          Criar
+        </button>
       </div>
     )
   }
