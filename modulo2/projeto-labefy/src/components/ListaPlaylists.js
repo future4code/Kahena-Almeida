@@ -7,7 +7,8 @@ export default class ListaPlaylists extends React.Component {
     super(props)
     this.state = {
       novaPlaylist: '',
-      listaPlaylists: []
+      listaPlaylists: [],
+      idPlaylistEntrar: ''
     }
     this.handleNome = this.handleNome.bind(this)
     this.playlistAtual = this.playlistAtual.bind(this)
@@ -28,7 +29,6 @@ export default class ListaPlaylists extends React.Component {
         }
       )
       .then(res => {
-        console.log('res', res.data)
         this.setState({ listaPlaylists: res.data.result.list })
       })
       .catch(err => {
@@ -80,20 +80,24 @@ export default class ListaPlaylists extends React.Component {
       })
   }
 
-  // criarNovaPlaylist = async () => {
-  //       const body = {
-  //     name: this.setState.novaPlaylist
+  // entrarPlaylist = id => {
+  //   const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?${id}=string`
+  //   const body = {
+  //     name: this.state.novaPlaylist
   //   }
-  //   const response = await axios.post(
-  //     'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
-  //     body,
-  //     {
+  //   axios
+  //     .search(url, body, {
   //       headers: {
-  //         Authorization: 'Kahena-Carvers'
+  //         Authorization: 'Kahena-Mansano-Carvers'
   //       }
-  //     }
-  //   )
-  //   console.log(response)
+  //     })
+  //     .then(res => {
+  //       console.log('tá indo o nome?')
+  //       this.setState({ idPlaylistEntrar: res.data.result.list.name })
+  //     })
+  //     .catch(err => {
+  //       alert('Ocorreu um erro!')
+  //     })
   // }
 
   render() {
@@ -102,6 +106,7 @@ export default class ListaPlaylists extends React.Component {
         <CardItem key={item.id}>
           {item.name}
           <button onClick={() => this.deletarPlaylist(item.id)}>x</button>
+          <button onClick={() => this.props.irParaMusicas(item.id)}>⇰</button>
         </CardItem>
       )
     })

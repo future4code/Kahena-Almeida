@@ -9,7 +9,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      telaAtual: 'Inicial'
+      telaAtual: 'Inicial',
+      idPlaylist: '',
+      idMusica: ''
     }
     this.irParaTelaInicial = this.irParaTelaInicial.bind(this)
     this.irParaPlaylists = this.irParaPlaylists.bind(this)
@@ -24,9 +26,19 @@ export default class App extends React.Component {
       case 'Lista Playlists e add':
         return <ListaPlaylists irParaMusicas={this.irParaMusicas} />
       case 'Lista Musicas e add':
-        return <ListaMusicas irParaReproducao={this.irParaReproducao} />
+        return (
+          <ListaMusicas
+            selectedId={this.state.idPlaylist}
+            irParaReproducao={this.irParaReproducao}
+          />
+        )
       case 'Reproduzir Musica':
-        return <ReproduzirMusica irParaTelaInicial={this.irParaTelaInicial} />
+        return (
+          <ReproduzirMusica
+            selectedId={this.state.idMusica}
+            irParaTelaInicial={this.irParaTelaInicial}
+          />
+        )
       default:
         return <TelaInicial irParaTelaInicial={this.irParaTelaInicial} />
     }
@@ -40,12 +52,13 @@ export default class App extends React.Component {
     this.setState({ telaAtual: 'Lista Playlists e add' })
   }
 
-  irParaMusicas = () => {
-    this.setState({ telaAtual: 'Lista Musicas e add' })
+  irParaMusicas = id => {
+    this.setState({ telaAtual: 'Lista Musicas e add', idPlaylist: id })
   }
 
-  irParaReproducao = () => {
-    this.setState({ telaAtual: 'Reproduzir Musica' })
+  irParaReproducao = url => {
+    console.log(url, 'url do vídeo')
+    this.setState({ telaAtual: 'Reproduzir Musica', idMusica: url })
   }
 
   render() {

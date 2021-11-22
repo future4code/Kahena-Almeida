@@ -60,3 +60,12 @@ export const Colunas = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
 `
+
+export const AdcionarMusica = styled.div`
+  max-width: 100vw;
+  max-height: 70vh;
+  display: grid;
+  grid-gap: 10px;
+  grid-row-start: 1fr 1fr 1fr;
+  justify-content: space-between;
+`
