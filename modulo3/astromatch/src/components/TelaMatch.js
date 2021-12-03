@@ -53,25 +53,58 @@ export default function TelaMatch(props) {
   // const [novoPerfil, setnovoPerfil] = useState({})
   // const [proximo, setProximo] = useState(0)
   const [novoPerfil, setnovoPerfil] = useState({})
-  const [mudarCard, setMudarCard] = useState(true)
+  // const [mudarCard, setMudarCard] = useState(true)
+  const [perfilEscolhido, setperfilEscolhido] = useState('')
 
-  const passarProximo = () => {
-    setMudarCard(!mudarCard)
-  }
   useEffect(() => {
+    addPerfilPrint()
+  }, [])
+
+  const addPerfilPrint = () => {
     axios
       .get(
-        `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:kahena/person`
+        'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/kahena/person'
       )
       .then(response => {
         const novoPerfilPrint = response.data.profile
-        setnovoPerfil(novoPerfilPrint)
+        setnovoPerfil({ novoPerfilPrint })
       })
       .catch(err => {
-        console.log(err, 'Qual erro')
+        alert(err.response.message)
       })
-  }, [mudarCard])
+  }
+
+  debugger
   console.log(novoPerfil, 'foi setado o novo perfil?')
+
+  const addEstado = () => {
+    let perfilAtual = novoPerfil.id
+    setperfilEscolhido(perfilAtual)
+    addPerfilMatch(perfilEscolhido)
+  }
+
+  const addPerfilMatch = () => {
+    const url =
+      'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/kahena/choose-person'
+    const body = {
+      id: perfilEscolhido.id,
+      choice: true
+    }
+    axios
+      .post(url, body, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => {
+        alert('Será que vai dar match? ❤')
+        console.log(res)
+      })
+      .catch(err => {
+        alert('Não foi curtido...verificar.')
+        console.log(err)
+      })
+  }
 
   return (
     <BoxTela>
@@ -95,13 +128,16 @@ export default function TelaMatch(props) {
         <img
           src="https://i.postimg.cc/xC0xtKYd/cruz.png"
           alt="Passar para próximo."
-          onClick={passarProximo}
+          width="30"
+          onClick={addPerfilPrint}
         />
-        <img
-          src="https://i.postimg.cc/sgQth9Dd/de-coracao.png"
-          alt="Icone de adicionar na lista de matchs."
-          onClick={props.array}
-        />
+        <button onClick={addEstado}>
+          <img
+            src="https://i.postimg.cc/sgQth9Dd/de-coracao.png"
+            alt="Icone de adicionar na lista de matchs."
+            width="30"
+          />
+        </button>
       </BodyMatch>
     </BoxTela>
   )

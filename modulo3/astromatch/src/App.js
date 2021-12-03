@@ -5,8 +5,8 @@ import TelaMatch from './components/TelaMatch'
 import TelaListaMatch from './components/TelaListaMatch'
 
 export default function App(props) {
-  const [telaAtual, setTelaAtual] = useState('Tela Inicial')
-  const [arrayLista, setArrayLista] = useState([])
+  const [telaAtual, setTelaAtual] = useState('Tela Lista Match')
+  // const [arrayLista, setArrayLista] = useState([])
   // const [proximo, setProximo] = useState(0)
 
   const mudarTela = () => {
@@ -14,9 +14,9 @@ export default function App(props) {
       case 'Tela Inicial':
         return <TelaInicial irPara={telaMatch} />
       case 'Tela Match':
-        return <TelaMatch irPara={listaMatch} array={arrayListaMatch} />
+        return <TelaMatch irPara={listaMatch} />
       case 'Tela Lista Match':
-        return <TelaListaMatch />
+        return <TelaListaMatch irPara={telaMatch} />
       default:
         return <TelaMatch />
     }
@@ -30,10 +30,10 @@ export default function App(props) {
     setTelaAtual('Tela Lista Match')
   }
 
-  const arrayListaMatch = match => {
-    let novaLista = [...arrayLista]
-    setArrayLista(novaLista.push(match))
-  }
+  // const arrayListaMatch = match => {
+  //   let novaLista = [...arrayLista]
+  //   setArrayLista(novaLista.push(match))
+  // }
 
   return <FundoTela>{mudarTela()}</FundoTela>
 }
