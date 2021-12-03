@@ -9,7 +9,7 @@ const BoxTela = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 35px;
   box-shadow: 0 0 1em black;
 `
@@ -20,22 +20,25 @@ const HeaderMatch = styled.div`
   justify-content: space-between;
   height: 15vh;
   width: 25vw;
+  border-bottom: 1px solid #e4e4e4;
 
-  background-color: silver;
   h3 {
     display: flex;
-    margin-top: 3px;
+    margin-top: 25px;
     margin-left: 7px;
     font-family: 'Quicksand', sans-serif;
     color: red;
     font-size: 25px;
     align-items: center;
   }
-  img {
+  button {
+    align-items: center;
     display: flex;
-    margin-top: 17px;
+    margin-top: 25px;
     margin-right: 7px;
-    height: 5vh;
+    margin-left: 7px;
+    margin-bottom: 10px;
+    height: 7vh;
   }
 `
 
@@ -90,31 +93,32 @@ export default function TelaListaMatch(props) {
       })
   }
 
-  debugger
   console.log(listaMatchs, 'foi setado a lista?')
 
-  const cardsPrint = listaMatchs.map(item => {
-    return (
-      <CardMatch key={item.id}>
-        <img src={item.photo} alt="Imagem do perfil do usuário." />
-        <p>{item.name}</p>
-      </CardMatch>
-    )
-  })
+  const cardsPrint = () => {
+    let arrayMatchs = [...listaMatchs]
+    arrayMatchs.map(item => {
+      return (
+        <CardMatch key={item.id}>
+          <img src={item.photo} alt="Imagem do perfil do usuário." />
+          <p>{item.name}</p>
+        </CardMatch>
+      )
+    })
+  }
 
   return (
     <BoxTela>
       <HeaderMatch>
         <button onClick={props.irPara}>←</button>
         <h3>AstroMatch</h3>
-        <button>
-          <img
-            src="https://i.postimg.cc/xC0xtKYd/cruz.png"
-            alt="X para limpar lista."
-            width="30"
-            onClick={limparLista}
-          />
-        </button>
+
+        <img
+          src="https://i.postimg.cc/xC0xtKYd/cruz.png"
+          alt="X para limpar lista."
+          width="30"
+          onClick={limparLista}
+        />
       </HeaderMatch>
       <BodyMatch>{cardsPrint}</BodyMatch>
     </BoxTela>

@@ -5,7 +5,7 @@ import TelaMatch from './components/TelaMatch'
 import TelaListaMatch from './components/TelaListaMatch'
 
 export default function App(props) {
-  const [telaAtual, setTelaAtual] = useState('Tela Lista Match')
+  const [telaAtual, setTelaAtual] = useState('Tela Inicial')
   // const [arrayLista, setArrayLista] = useState([])
   // const [proximo, setProximo] = useState(0)
 

@@ -9,7 +9,7 @@ const BoxTela = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 35px;
   box-shadow: 0 0 1em black;
 `
@@ -17,14 +17,16 @@ const HeaderMatch = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
+  margin-top: 15px;
+  margin-bottom: 5px;
   justify-content: space-between;
-  height: 15vh;
+  height: 10vh;
   width: 25vw;
-
-  background-color: silver;
+  border-bottom: 1px solid #e4e4e4;
   h3 {
     display: flex;
     margin-top: 3px;
+    margin-bottom: 0;
     margin-left: 7px;
     font-family: 'Quicksand', sans-serif;
     color: red;
@@ -32,10 +34,12 @@ const HeaderMatch = styled.div`
     align-items: center;
   }
   img {
+    margin-bottom: 0;
     display: flex;
     margin-top: 17px;
     margin-right: 7px;
     height: 5vh;
+    cursor: pointer;
   }
 `
 
@@ -45,8 +49,37 @@ const CardMatch = styled.div`
   box-shadow: 0 0 1em black;
   display: flex;
   flex-direction: column;
-  height: 55vh;
-  width: 25vw;
+  margin-top: 10px;
+  height: 65vh;
+  width: 20vw;
+  img {
+    height: 45vh;
+    width: 20vw;
+  }
+  h3 {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: 'Quicksand', sans-serif;
+    color: red;
+    font-size: 18px;
+    margin-left: 2px;
+  }
+  p {
+    margin-top: 4px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    font-family: 'Quicksand', sans-serif;
+    color: red;
+    font-size: 15px;
+  }
+`
+const BotoesRodape = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
 `
 
 export default function TelaMatch(props) {
@@ -61,20 +94,20 @@ export default function TelaMatch(props) {
   }, [])
 
   const addPerfilPrint = () => {
+    const nomeAluno = 'kahena-carvers'
     axios
       .get(
-        'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/kahena/person'
+        `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nomeAluno}/person`
       )
       .then(response => {
         const novoPerfilPrint = response.data.profile
-        setnovoPerfil({ novoPerfilPrint })
+        setnovoPerfil(novoPerfilPrint)
       })
       .catch(err => {
-        alert(err.response.message)
+        alert(err)
       })
   }
 
-  debugger
   console.log(novoPerfil, 'foi setado o novo perfil?')
 
   const addEstado = () => {
@@ -84,10 +117,10 @@ export default function TelaMatch(props) {
   }
 
   const addPerfilMatch = () => {
-    const url =
-      'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/kahena/choose-person'
+    const nomeAluno = 'kahena-carvers'
+    const url = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nomeAluno}/choose-person`
     const body = {
-      id: perfilEscolhido.id,
+      id: perfilEscolhido,
       choice: true
     }
     axios
@@ -118,26 +151,27 @@ export default function TelaMatch(props) {
       </HeaderMatch>
       <BodyMatch>
         <CardMatch key={novoPerfil.id}>
-          <img src={novoPerfil.photo} alt="Imagem do perfil do usuário.">
-            <p>
-              {novoPerfil.name},{novoPerfil.age}
-            </p>
-            <p>{novoPerfil.bio}</p>
-          </img>
+          <img src={novoPerfil.photo} alt="Imagem do perfil do usuário." />
+          <h3>
+            {novoPerfil.name}, {novoPerfil.age}
+          </h3>
+          <p>{novoPerfil.bio}</p>
         </CardMatch>
-        <img
-          src="https://i.postimg.cc/xC0xtKYd/cruz.png"
-          alt="Passar para próximo."
-          width="30"
-          onClick={addPerfilPrint}
-        />
-        <button onClick={addEstado}>
+        <BotoesRodape>
+          <img
+            src="https://i.postimg.cc/xC0xtKYd/cruz.png"
+            alt="Passar para próximo."
+            width="30"
+            onClick={addPerfilPrint}
+          />
+
           <img
             src="https://i.postimg.cc/sgQth9Dd/de-coracao.png"
             alt="Icone de adicionar na lista de matchs."
             width="30"
+            onClick={addEstado}
           />
-        </button>
+        </BotoesRodape>
       </BodyMatch>
     </BoxTela>
   )
