@@ -86,12 +86,12 @@ export default function TelaMatch(props) {
   // const [novoPerfil, setnovoPerfil] = useState({})
   // const [proximo, setProximo] = useState(0)
   const [novoPerfil, setnovoPerfil] = useState({})
-  // const [mudarCard, setMudarCard] = useState(true)
+  const [perfilClicado, setperfilClicado] = useState('')
   const [perfilEscolhido, setperfilEscolhido] = useState('')
 
   useEffect(() => {
     addPerfilPrint()
-  }, [])
+  }, [perfilEscolhido])
 
   const addPerfilPrint = () => {
     const nomeAluno = 'kahena-carvers'
@@ -102,6 +102,8 @@ export default function TelaMatch(props) {
       .then(response => {
         const novoPerfilPrint = response.data.profile
         setnovoPerfil(novoPerfilPrint)
+        const idPerfil = response.data.profile.id
+        setperfilClicado(idPerfil)
       })
       .catch(err => {
         alert(err)
@@ -111,16 +113,16 @@ export default function TelaMatch(props) {
   console.log(novoPerfil, 'foi setado o novo perfil?')
 
   const addEstado = () => {
-    let perfilAtual = novoPerfil.id
+    let perfilAtual = perfilClicado
     setperfilEscolhido(perfilAtual)
     addPerfilMatch(perfilEscolhido)
   }
 
-  const addPerfilMatch = () => {
+  const addPerfilMatch = idPerfil => {
     const nomeAluno = 'kahena-carvers'
     const url = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nomeAluno}/choose-person`
     const body = {
-      id: perfilEscolhido,
+      id: idPerfil,
       choice: true
     }
     axios

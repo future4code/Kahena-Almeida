@@ -60,12 +60,13 @@ export default function TelaListaMatch(props) {
   }, [])
 
   const verLista = () => {
+    const nomeAluno = 'kahena-carvers'
     axios
       .get(
-        'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/kahena/matches'
+        `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nomeAluno}/matches`
       )
       .then(response => {
-        const novaLista = response.data
+        const novaLista = response.data.matches
         setlistaMatchs(novaLista)
       })
       .catch(err => {
@@ -95,8 +96,13 @@ export default function TelaListaMatch(props) {
 
   console.log(listaMatchs, 'foi setado a lista?')
 
+  useEffect(() => {
+    cardsPrint()
+  }, [])
+
   const cardsPrint = () => {
     let arrayMatchs = [...listaMatchs]
+    console.log(arrayMatchs, 'array copiado')
     arrayMatchs.map(item => {
       return (
         <CardMatch key={item.id}>
