@@ -16,7 +16,7 @@ background-color: #f4511e;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
-  margin: 25px 25px;
+  margin: 15px 15px;
   opacity: 0.6;
   transition: 0.3s;
   display: inline-block;

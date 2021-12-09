@@ -61,23 +61,10 @@ function ListTrips() {
       )
       .then(res => {
         setCardsList(res.data.trips)
-        let listaAtual = [...cardsList]
-        const mostrarLista = listaAtual.map(item => {
-          return (
-            <CardItem key={item.id}>
-              <h3>{item.name}</h3>
-              <p>
-                Detalhes: {item.description}
-                Destino: {item.planet}
-                Duração: {item.durationInDays} dias Data de embarque:
-                {item.date}
-              </p>
-            </CardItem>
-          )
-        })
       })
       .catch(err => {
         console.log(err, 'Erro get list')
+        alert('Houve algum erro, tente novamente.')
       }, [])
   }
 
@@ -96,10 +83,10 @@ function ListTrips() {
             return (
               <CardItem key={item.id}>
                 <h2>{item.name}</h2>
-                <h3>Detalhes:{item.description}</h3>
-                <h3>Destino:{item.planet}</h3>
-                <h3>Duração:{item.durationInDays}</h3>
-                <h3>Data de embarque:{item.date}</h3>
+                <h3>Detalhes: {item.description}</h3>
+                <h3>Destino: {item.planet}</h3>
+                <h3>Duração: {item.durationInDays} dias</h3>
+                <h3>Data de embarque: {item.date}</h3>
               </CardItem>
             )
           })
