@@ -57,7 +57,7 @@ function ListTrips() {
   const showList = () => {
     axios
       .get(
-        'https://us-central1-labenu-apis.cloudfunctions.net/labeX/kahena-carvers/trips'
+        'https://us-central1-labenu-apis.cloudfunctions.net/labeX/kahena-mansano/trips'
       )
       .then(res => {
         setCardsList(res.data.trips)

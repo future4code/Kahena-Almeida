@@ -113,7 +113,7 @@ function ApplicationForm() {
   const showList = () => {
     axios
       .get(
-        'https://us-central1-labenu-apis.cloudfunctions.net/labeX/kahena-carvers/trips'
+        'https://us-central1-labenu-apis.cloudfunctions.net/labeX/kahena-mansano/trips'
       )
       .then(res => {
         setCardsList(res.data.trips)
@@ -126,7 +126,7 @@ function ApplicationForm() {
 
   const postForm = () => {
     let id = 'id' + new Date().getTime()
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/kahena-carvers/trips/${id}/apply`
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/kahena-mansano/trips/${id}/apply`
     const dados = { ...infoForm }
     const body = {
       name: dados.name,

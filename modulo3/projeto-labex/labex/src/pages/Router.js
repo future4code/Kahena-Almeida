@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import HomePage from './HomePage'
 import ListTrips from './ListTripsPage'
 import ApplicationForm from './ApplicationFormPage'
+import LoginAdminPage from './LoginAdminPage'
+import CreateTripPage from './CreateTripPage'
 
 export const Router = () => {
   return (
@@ -21,8 +23,12 @@ export const Router = () => {
             <ApplicationForm />
           </Route>
 
-          <Route exact path="/applicationForm">
-            <ApplicationForm />
+          <Route exact path="/loginAdmin">
+            <LoginAdminPage />
+          </Route>
+
+          <Route exact path="/createTrip">
+            <CreateTripPage />
           </Route>
         </Switch>
       </BrowserRouter>
