@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express"
 import { AddressInfo } from "net";
+import { users, User } from "./cadastro";
 
 const app = express();
 app.use(express.json());
@@ -15,46 +16,56 @@ const server = app.listen(process.env.PORT || 3003, () => {
 
 app.post("/register", (req: Request, res: Response) => {
   try {
-    const name = req.body.name
-    const price = req.body.price
+    const {name, cpf, birth} = req.body
 
-    if (!name || !price) {
-      throw new Error("Um ou mais campos faltando: 'name', 'price'")
+    if (!name || !cpf || !birth) {
+      throw new Error("Um ou mais campos estão faltando: 'name', 'CPF' e/ou 'birth'.")
     }
 
     if (typeof name !== "string") {
-      throw new Error("O campo 'name' deve ser uma string")
+      throw new Error("O campo 'name' deve ser uma string.")
     }
 
-    if (typeof price !== "number" || price <= 0) {
-      throw new Error("O campo 'price' deve ser um number e maior que zero")
+    if (typeof cpf !== "number") {
+      throw new Error("O campo 'cpf' deve ser um number.")
     }
 
-    const newProduct: Product = {
-      id: Date.now().toString(),
-      name,
-      price
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].userCpf === cpf) {
+        throw new Error("O campo 'cpf' não pode ser igual ao de outro usuário.")
+      }
     }
-
-    products.push(newProduct)
-
-    res.send(products)
-
-  } catch (error: any) {
-    switch (error.message) {
-      case "Um ou mais campos faltando: 'name', 'price'":
-        res.status(422)
-        break
-      case "O campo 'name' deve ser uma string":
-        res.status(422)
-        break
-      case "O campo 'price' deve ser um number maior que zero":
-        res.status(422)
-        break
-      default:
-        res.status(500)
+  
+    const newUser: User = {
+      userId: Date.now(),
+      userName: name,
+      userCpf: cpf,
+      userBirth: birth,
+      userBalance: 0,
+      userExtract:[]
     }
+  
+    users.push(newUser)
+    res.send(users)
 
-    res.send(error.message || "Erro inesperado")
-  }
+  }catch (error: any) {
+      switch (error.message) {
+        case "Um ou mais campos estão faltando: 'name', 'CPF' e/ou 'birth'.":
+          res.status(422)
+          break
+        case "O campo 'name' deve ser uma string.":
+          res.status(422)
+          break
+        case "O campo 'cpf' deve ser um number.":
+          res.status(422)
+          break
+        case "O campo 'cpf' não pode ser igual ao de outro usuário.":
+          res.status(409)
+          break
+        default:
+          res.status(500)
+      }
+  
+      res.send(error.message || "Erro inesperado")
+    }
 })
