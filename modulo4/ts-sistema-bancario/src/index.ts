@@ -69,3 +69,82 @@ app.post("/register", (req: Request, res: Response) => {
       res.send(error.message || "Erro inesperado")
     }
 })
+
+app.get("/balance", (req: Request, res: Response) => {
+  try {
+    const {name, cpf} = req.body
+    let searchResponse = 0
+
+    if (!name || !cpf) {
+      throw new Error("Um ou mais campos estão faltando: 'name' e/ou 'CPF'")
+    }
+
+ 
+    for (let i = 0; i < users.length; i++) {
+          if (users[i].userCpf !== cpf) {
+            throw new Error("Usuário não encontrado")
+          }
+      }
+
+
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].userName === name || users[i].userCpf === cpf) {
+        res.send(users[i].userBalance) 
+      }
+    }
+
+
+  } catch (error: any) {
+    switch (error.message) {
+      case "Um ou mais campos estão faltando: 'name', 'CPF' e/ou 'birth'.":
+        res.status(422)
+        break
+      case "Usuário não encontrado":
+          res.status(404)
+          break
+        default:
+          res.status(500)
+      }
+
+    res.send(error.message || "Erro inesperado")
+  }
+})
+
+app.put("/newbalance", (req: Request, res: Response) => {
+  try {
+    const {name, cpf, newValue} = req.body
+  
+    if (!name || !cpf || !newValue) {
+      throw new Error("Um ou mais campos estão faltando: 'name', 'CPF' e/ou 'value'")
+    }
+
+    if (typeof newValue !== "number" || newValue <= 0) {
+      throw new Error("O path param 'price' deve ser um number e maior que zero")
+    }
+
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].userName === name || users[i].userCpf === cpf) {
+        users[i].userBalance = newValue
+      }
+    }
+
+    res.send(name || cpf || newValue)
+
+  } catch (error: any) {
+    switch (error.message) {
+      case "Path param faltando: 'price'":
+        res.status(422)
+        break
+      case "O path param 'price' deve ser um number maior que zero":
+        res.status(422)
+        break
+      case "Produto não encontrado":
+        res.status(404)
+        break
+      default:
+        res.status(500)
+    }
+
+    res.send(error.message || "Erro inesperado")
+  }
+})
