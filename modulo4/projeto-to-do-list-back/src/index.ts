@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
 import connection from "./connection";
+import { request } from "http";
 
 const app = express();
 
@@ -40,7 +41,32 @@ app.put("/users", async (req: Request, res: Response): Promise<void> => {
     res.status(500).send(error.sqlMessage || error.message);
   }
 });
+    
+app.get("/users/:id", async (req: Request, res: Response):
+Promise<any> => {
+  try{
+    const [resultado] = await connection("Users").where({id: req.params.id }).select();
+    const {id, nick_name} = resultado
 
+    res.status(200).send({id, nick_name});
+  
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+})
+
+app.post("/users/edit/:id", async (req: Request, res: Response): Promise<void> => {
+  try {
+    const resultado = await connection("Users").where({id: req.params.id }).update({name:req.body.name, nick_name: req.body.nickName});
+      
+    res.status(200).send(resultado);
+  } catch(error:any) {
+    if (req.body.name === "" && req.body.nick_name === "") {
+      res.status(404).send(error.sqlMessage || error.message || "Os dados para substituição não podem ser vazios.");
+    } else {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+}})
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
