@@ -48,6 +48,12 @@ Promise<any> => {
     const [resultado] = await connection("Users").where({id: req.params.id }).select();
     const {id, nick_name} = resultado
 
+    if(!resultado){
+      res.status(404).send({
+        message: "Usuário não encontrado."
+      })
+    }
+
     res.status(200).send({id, nick_name});
   
   } catch (error: any) {
@@ -55,18 +61,50 @@ Promise<any> => {
   }
 })
 
+const editarUsuarios = async (
+  id: string,
+  name?: string,
+  nickName?: string,
+  email?: string
+): Promise<void> => {
+  if (name) {
+    await connection.raw(
+      `UPDATE Users SET name = '${name}' WHERE id = '${id}'
+      `)
+  }
+  if (nickName) {
+    await connection.raw(
+      `UPDATE Users SET nick_name = '${nickName}' WHERE id = '${id}'
+      `)
+  }
+  if (email) {
+    await connection.raw(
+      `UPDATE Users SET email = '${email}' WHERE id = '${id}'
+      `)
+  }
+};
+
 app.post("/users/edit/:id", async (req: Request, res: Response): Promise<void> => {
   try {
-    const resultado = await connection("Users").where({id: req.params.id }).update({name:req.body.name, nick_name: req.body.nickName});
-      
-    res.status(200).send(resultado);
-  } catch(error:any) {
-    if (req.body.name === "" && req.body.nick_name === "") {
-      res.status(404).send(error.sqlMessage || error.message || "Os dados para substituição não podem ser vazios.");
-    } else {
+    if(!req.body.id){
+      res.status(400).send("É necessário informar o id.");
+    }
+    if(!req.body.name && !req.body.nickName && !req.body.email){
+      res.status(400).send("Os dados para substituição não podem ser vazios.");
+    }
+    await editarUsuarios(
+      req.body.id,
+      req.body.name,
+      req.body.nickName,
+      req.body.email
+    );
+
+    res.status(201).send("Usuário editado!");
+  } catch (error: any) {
     res.status(500).send(error.sqlMessage || error.message);
   }
-}})
+});
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
