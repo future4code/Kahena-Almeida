@@ -1,4 +1,4 @@
-import app from "./app";
+import {app} from "./app";
 import { getAllUsersOrdered } from "./endpoints/getAllUsersOrdered";
 import { getUsersFilterByName } from "./endpoints/getUsersFilterByName";
 import { getUsersFilterByType } from './endpoints/getUsersFilterByType';
