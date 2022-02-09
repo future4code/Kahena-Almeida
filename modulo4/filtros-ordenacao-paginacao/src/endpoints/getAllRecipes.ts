@@ -8,13 +8,24 @@ export async function getAllRecipes(
 ): Promise<void> {
    try {
       const result = await connection("aula49_recipes")
-
+      const errorCode = 500;
       const recipes = result.map(toRecipe)
+      const title = req.query.title;
+
+      if(title === ''){
+         const errorCode = 404;
+         throw new Error("O valor de title não foi informado.");
+      }
+
+      if(recipes.length < 1){
+         const errorCode = 422;
+         throw new Error("Não foram encontrados 'recipes' com esse 'title'.");
+      }
 
       res.status(200).send(recipes)
 
-   } catch (error) {
-      res.status(500).send("Internal server error")
+   } catch (error:any) {
+      res.status(errorCode).send(error.message)
    }
 }
 

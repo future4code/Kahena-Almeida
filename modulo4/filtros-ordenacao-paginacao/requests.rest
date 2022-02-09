@@ -1,0 +1,17 @@
+GET http://localhost:3003/user
+Content-Type: application/json
+###
+GET http://localhost:3003/user/fullsearch
+Content-Type: application/json
+###
+GET http://localhost:3003/user/search
+Content-Type: application/json
+###
+GET http://localhost:3003/user/page
+Content-Type: application/json
+###
+GET http://localhost:3003/user/:type
+Content-Type: application/json
+###
+
+
