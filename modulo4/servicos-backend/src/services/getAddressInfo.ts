@@ -1,24 +1,64 @@
-import axios from 'axios'
-import { Address } from "../types/Address";
+import { Request, Response } from "express";
+import connection from "../data/connection";
+import getAddressInfo from "../services/getAddressInfo";
+import mailTransporter from "../services/mailTransporter";
+import { AddressInfo, UserAddress } from "../types";
 
-const baseUrl = "https://viacep.com.br/ws"
+export default async function createUserAddress(
+   req: Request,
+   res: Response
+): Promise<void> {
+   let errorCode: number = 400;
 
-export const getAddressInfo = async (cep: string): Promise<Address | null> => {
+   try {
+      const { zipcode, addressNumber, complement } = req.body;
 
-    try {
-        const response = await axios.get(`${baseUrl}/${cep}/json/`)
-    
-        const address: Address = {
-            state: response.data.uf,
-            city: response.data.localidade,
-            neighborhood: response.data.bairro,
-            street: response.data.logradouro
-        }
+      if (!zipcode || !addressNumber) {
+         errorCode = 422;
+         throw new Error("'zipcode' e 'addressNumber' são obrigatórios!");
+      };
 
-        return address
+      if (typeof Number(addressNumber) !== "number") {
+         errorCode = 422;
+         throw new Error("'addressNumber' deve ser um número no formato string!")
+      };
 
-    } catch (error) {
-        console.log("Erro no serviço getAddressInfo:", error)
-        return null
-    }
-}
+      const result: AddressInfo | null = await getAddressInfo(zipcode);
+
+      if (result) {
+         const { street, neighbourhood, city, state } = result;
+         
+         const newUser: UserAddress = { zipcode, street, addressNumber, complement, neighbourhood, city, state };
+
+         await connection('UsersAddress')
+            .insert(newUser);
+   
+         process.env.NODEMAILER_USER ? await mailTransporter.sendMail({
+            from: `<${process.env.NODEMAILER_USER}>`,
+            to: `<g6e8k2i3m1o7e5d9@labenualunos.slack.com>`,
+            subject: "Desafio-Aula-Serviços-Backend",
+            text:`
+               O objeto utilizado foi:
+
+               await mailTransporter.sendMail({;
+                  from: email_do_usuario,
+                  to: email_labenu,
+                  subject: "Desafio-Aula-Serviços-Backend",
+                  text: texto digitado
+               })
+            `
+         }) : null; 
+
+         res.status(201).send("Endereço de usuário criado com sucesso!");
+      } else {
+         errorCode = 422
+         throw new Error("Verifique o `zipcode` fornecido, por favor!")  
+      }    
+   } catch (error) {
+      if (error instanceof Error ) {
+         res.status(errorCode).send({ message: error.message });
+      } else {
+         res.status(400).send({ message: "Erro inesperado!"})
+      };  
+   };
+};
