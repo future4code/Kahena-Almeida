@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import connection from "../../data/connection";
+import connection from "../data/connection";
 import getAddressInfo from "../services/getAddressInfo";
 import mailTransporter from "../services/mailTransporter";
 import { AddressInfo, UserAddress } from "../types/Address";
