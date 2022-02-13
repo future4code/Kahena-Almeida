@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import connection from "../data/connection";
 
-export const getAllUsers = async(
+export default async function getAllUsers(
    req: Request,
    res: Response
-): Promise<void> =>{
+): Promise<void>{
     let errorCode: number = 400;
    const printError = (error: any) => { console.log(error.sqlMessage || error.message) };
 
