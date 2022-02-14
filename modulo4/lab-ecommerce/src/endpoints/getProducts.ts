@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import connection from "../data/connection";
 
-export default async function getAllUsers(
+export default async function getAllProducts(
    req: Request,
    res: Response
 ): Promise<void>{
@@ -11,10 +11,12 @@ export default async function getAllUsers(
 
    try {
 
-      const result = await connection('labecommerce_users')
-      .then(() => { console.log("Lista de usuários encontrada!") })
+      const result = await connection('labecommerce_products')
+      .select()
+      .then(() => { console.log("Lista de produtos encontrada!") })
       .catch(printError)
       .finally(closeConnection);
+
 
       return result;
       

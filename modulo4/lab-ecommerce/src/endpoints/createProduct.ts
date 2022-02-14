@@ -17,13 +17,16 @@ export default async function createProducts(
          throw new Error("Name, price e image são dados obrigatórios!");
       };
       
-      const id = Math.floor(Date.now() * Math.random()).toString(36)
+      const closeConnection = () => { connection.destroy() }
+
+      const id = Math.ceil(Math.random() * Math.pow(10, 6)).toString();
       const newProduct: Products = {id, name, price, image_url};
 
          await connection('labecommerce_products')
             .insert(newProduct)
             .then(() => { console.log("Produto criado") })
-            .catch(printError);
+            .catch(printError)
+            .finally(closeConnection);
             
    } catch (error) {
     if (error instanceof Error ) {
