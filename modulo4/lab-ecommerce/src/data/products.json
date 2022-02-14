@@ -1,0 +1,19 @@
+[{
+  "id": "01",
+  "name": "KIT Skincare by La Roche Posay",
+  "price": 280,
+  "image_url": "https://images.unsplash.com/photo-1595521969746-7d87f7480fc3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1034&q=80"
+},
+{
+  "id": "02",
+  "name": "Brinco banhado a ouro 18k",
+  "price": 80,
+  "image_url": "https://images.unsplash.com/photo-1610214054205-7595cba9cd23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHV0b3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+},
+{
+  "id": "03",
+  "name": "Medalhão de ouro 18k",
+  "price": 2000,
+  "image_url": "https://images.unsplash.com/photo-1630358248798-955fe58fd341?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHByb2R1dG9zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+}
+]

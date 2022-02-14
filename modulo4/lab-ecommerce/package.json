@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsc && node --inspect ./build/index.js",
     "dev": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts",
-    "migrations": "tsnd ./src/data/migrations.ts"
+    "migrations": "tsnd ./src/data/migrations.ts",
+    "migrations-products": "tsnd ./src/data/migration-products.ts"
   },
   "keywords": [],
   "author": "",
