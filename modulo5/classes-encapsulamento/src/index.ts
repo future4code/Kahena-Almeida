@@ -45,4 +45,31 @@ class Transaction {
     this.value = value;
     this.description = description
   }
+
+  public getDate(){
+    return this.date
+  }
+
+  public getValue(){
+    return this.value
+  }
+
+  public getDescription(){
+    return this.description
+  }
+}
+
+const transaction1 = new Transaction('caiu o salario', 3000, '14/02/22')
+
+// usuario.setTransaction(transaction1.getDate(), transaction1.getValue(), transaction1.getDescription())
+
+// usuario.insertTransaction(transaction1)
+
+class Bank {
+  private accounts: UserAccount[];
+
+  constructor(accounts: UserAccount[]) {
+    this.accounts = accounts;
+  }
+
 }
