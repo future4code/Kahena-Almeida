@@ -6,6 +6,6 @@ export type user = {
    nickname: string
 }
 
-export type imput = {
-   
+export type Authentication = {
+   id: string
 }
