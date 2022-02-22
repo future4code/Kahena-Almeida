@@ -1,18 +1,9 @@
-import express, { Request, Response } from "express";
-import dotenv from "dotenv";
-import { AddressInfo } from "net";
+import app from './app'
+import editUser from './endpoints/editUser'
+import createUser from './endpoints/createUser'
+import login from './endpoints/login'
+import { HashManager } from './services/HashManager'
 
-dotenv.config();
-
-const app = express();
-
-app.use(express.json());
-
-const server = app.listen(process.env.PORT || 3003, () => {
-  if (server) {
-    const address = server.address() as AddressInfo;
-    console.log(`Server is running in http://localhost:${address.port}`);
-  } else {
-    console.error(`Failure upon starting server.`);
-  }
-});
+app.post('/users/signup', createUser)
+app.post('/users/login', login)
+app.put('/users', editUser)
