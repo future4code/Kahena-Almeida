@@ -12,3 +12,7 @@
     O valor padrão é 10, pois você deseja selecionar um número alto o suficiente para evitar ataques, mas não mais lento do que a paciência do usuário em potencial.
 
 2. a.
+
+### Para realizar os testes corretamente, qual deles você deve modificar primeiro? O cadastro ou o login? Justifique.
+
+    Primeiro devo criptografar o cadastro, para que no login seja implementado esse novo acesso de usuário já criado.
