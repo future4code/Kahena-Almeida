@@ -16,3 +16,4 @@
 ### Para realizar os testes corretamente, qual deles você deve modificar primeiro? O cadastro ou o login? Justifique.
 
     Primeiro devo criptografar o cadastro, para que no login seja implementado esse novo acesso de usuário já criado.
+ 
