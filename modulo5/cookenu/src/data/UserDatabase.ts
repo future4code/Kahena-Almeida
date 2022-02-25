@@ -27,4 +27,18 @@ export class UserDatabase extends BaseDatabase {
       throw new Error(error.sqlMessage || error.message)
     }
   }
+
+  public async getAllUsers(): Promise<User[]> {
+    try {
+      const users = await BaseDatabase.connection('cookenu_user').select(
+        'id',
+        'name',
+        'email',
+        'role'
+      )
+      return users.map(user => User.toUserModel(user))
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message)
+    }
+  }
 }
