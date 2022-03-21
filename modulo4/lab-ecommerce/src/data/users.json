@@ -1,0 +1,62 @@
+[
+	{
+		"id":1,
+		"name": "Soter",
+		"email": "soter@labenu",
+		"password": "asfsadfsfghdfgh"
+	},
+	{
+		"id":2,
+		"name": "João",
+		"email": "joao@labenu",
+		"password": "tyuty4544gh"
+	},
+	{
+		"id":3,
+		"name": "Paula",
+		"email": "paula@labenu",
+		"password": "896789gh"
+	},
+	{
+		"id":4,
+		"name": "Amanda",
+		"email": "amanda@labenu",
+		"password": "89897089hjkgh"
+	},
+	{
+		"id":5,
+		"name": "Darvas",
+		"email": "darvas@labenu",
+		"password": "t78978"
+	},
+	{
+		"id":6,
+		"name": "Severo",
+		"email": "severo@labenu",
+		"password": "tydgde342"
+	},
+	{
+		"id":7,
+		"name": "Caio",
+		"email": "caio@labenu",
+		"password": "sgsdfgdfgh"
+	},
+	{
+		"id":8,
+		"name": "Chijo",
+		"email": "chijo@labenu",
+		"password": "ty980gh"
+	},
+	{
+		"id":9,
+		"name": "Lais",
+		"email": "lais@labenu",
+		"password": "tysdfs4gh"
+	},
+	{
+		"id":10,
+		"name": "Bruno",
+		"email": "bruno@labenu",
+		"password": "tysdfgd44gh"
+	}
+]

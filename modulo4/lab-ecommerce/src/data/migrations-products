@@ -1,0 +1,28 @@
+import connection from "./connection";
+import products from "./products.json";
+
+const printError = (error: any) => { console.log(error.sqlMessage || error.message) };
+
+const createTableProducts = () => connection
+   .raw(`
+      CREATE TABLE IF NOT EXISTS labecommerce_products(
+         id INT PRIMARY KEY,
+         name VARCHAR(255) NOT NULL,
+         price VARCHAR(255) NOT NULL,
+         image_url VARCHAR(255) NOT NULL
+      );
+   `)
+   .then(() => { console.log("Tabela de produtos criada!") })
+   .catch(printError);
+
+const insertProducts = () => connection("labecommerce_products")
+   .insert(products)
+   .then(() => { console.log("Produtos inseridos!") })
+   .catch(printError);
+
+const closeConnection = () => { connection.destroy() }
+
+createTableProducts()
+   .then(insertProducts)
+   .finally(closeConnection);
+
