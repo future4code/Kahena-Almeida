@@ -1,0 +1,29 @@
+{
+   "name": "jest-template",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "start": "tsc && node ./build/index.js",
+      "dev": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts",
+      "build": "tsc",
+      "test": "jest",
+      "migrations": "tsnd ./src/data/migrations.ts"
+   },
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "dotenv": "^8.2.0",
+      "knex": "^0.21.21",
+      "mysql": "^2.18.1"
+   },
+   "devDependencies": {
+      "@types/jest": "^27.4.1",
+      "@types/knex": "^0.16.1",
+      "@types/node": "^14.0.6",
+      "jest": "^27.5.1",
+      "ts-jest": "^27.1.3",
+      "ts-node-dev": "^1.0.0-pre.44",
+      "typescript": "^3.9.3"
+   }
+}
