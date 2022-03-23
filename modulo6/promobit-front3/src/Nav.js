@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './Nav.css'
 
 function Nav() {
-  const [show, handleShow] = useState(false)
+  const [show, handleShow] = useState(true)
 
   const transitionNavBar = () => {
     if (window.scrollY > 100) {
-      handleShow(true)
-    } else {
       handleShow(false)
+    } else {
+      handleShow(true)
     }
   }
 

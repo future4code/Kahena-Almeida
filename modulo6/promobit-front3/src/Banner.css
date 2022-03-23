@@ -1,37 +1,72 @@
 .banner {
   position: absolute;
-  width: 1440px;
-  height: 449px;
-  left: 0px;
-  top: 56px;
-  background: #2d0c5e;
+  height: 505px;
+  width: 100%;
+  border-top: 7rem;
+  object-fit: contain;
+  background-color: #2d0c5e;
+  box-shadow: 0 0 1em black;
+}
+
+.banner_content {
+  position: relative;
+  margin-top: 141px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1033px;
 }
 
 .banner_title {
-  position: absolute;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 3rem;
+  text-align: center;
+  margin: auto;
+  color: #ffffff;
   width: 781px;
   height: 112px;
-  left: 328px;
-  top: 141px;
+}
 
+.filter {
+  margin-top: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title_filter {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 56px;
-
+  font-size: 14px;
   text-align: center;
-  letter-spacing: -0.005em;
-
   color: #ffffff;
+  margin-bottom: 16px;
 }
 
-.banner--fadeBottom {
-  height: 7.4rem;
-  background-color: linear-gradient(
-    180deg,
-    transparent,
-    rgba(37, 37, 37, 0.61),
-    #111
-  );
+.banner_buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.button {
+  cursor: pointer;
+  color: #323232;
+  background-color: #ffffff;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  padding: 8px 16px;
+  margin: 0.3rem;
+}
+
+.button:hover {
+  color: #2d0c5e;
+  background-color: #e6e6e6;
+  transition: all 0.2s;
 }
