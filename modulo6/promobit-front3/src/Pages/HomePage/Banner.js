@@ -1,7 +1,9 @@
 import React from 'react'
 import './Banner.css'
+import requests from '../../Components/axios/Requests'
 
 function Banner() {
+  console.log(requests.fetchActionMovies)
   return (
     <div className="banner">
       <div className="banner_content">
@@ -13,7 +15,13 @@ function Banner() {
           <p className="title_filter">FILTRE POR:</p>
 
           <div className="banner_buttons">
-            <button className="button">Ação</button>
+            <button
+              className="button"
+              // fetchUrl={requests.fetchActionMovies}
+            >
+              Ação
+            </button>
+
             <button className="button">Aventura</button>
             <button className="button">Animação</button>
             <button className="button">Comédia</button>

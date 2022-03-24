@@ -20,11 +20,15 @@ function Nav() {
   return (
     <div className={`nav ${show && 'nav_purple'}`}>
       <div className="nav_contents">
-        <img
-          className="nav_logo"
-          src="https://i.postimg.cc/tCsRgk4G/Vector.png"
-          alt="Logo TMDB"
-        />
+        <a href="https://www.themoviedb.org/" target="blank">
+          <img
+            className="nav_logo"
+            src="https://i.postimg.cc/tCsRgk4G/Vector.png"
+            alt="Logo TMDB"
+            href="https://www.themoviedb.org/"
+            target="_blank"
+          />
+        </a>
 
         <img
           className="nav_avatar"
