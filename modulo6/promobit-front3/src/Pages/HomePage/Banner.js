@@ -1,13 +1,15 @@
 import React from 'react'
 import './Banner.css'
-import requests, { genresURL } from '../../Components/axios/Requests'
+import { genresURL } from '../../Components/axios/Requests'
 
 function Banner({ onClickMovie }) {
   return (
     <div className="banner">
       <div className="banner_content">
         <h1 className="banner_title">
-          Milhões de filmes, séries e pessoas para descobrir. Explore já.
+          Milhões de filmes, séries e pessoas
+          <br />
+          para descobrir. Explore já.
         </h1>
 
         <div className="filter">

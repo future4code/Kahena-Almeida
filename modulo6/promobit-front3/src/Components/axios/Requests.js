@@ -12,25 +12,15 @@ export const genresURL = [
   { name: 'Documentário', url: gen(99) },
   { name: 'Drama', url: gen(18) },
   { name: 'Família', url: gen(10751) },
-  { name: 'Fantasia', url: gen(14) }
+  { name: 'Fantasia', url: gen(14) },
+  { name: 'História', url: gen(36) },
+  { name: 'Terror', url: gen(27) },
+  { name: 'Música', url: gen(10402) },
+  { name: 'Mistério', url: gen(9648) },
+  { name: 'Romance', url: gen(10749) },
+  { name: 'Ficção Científica', url: gen(878) },
+  { name: 'Cinema TV', url: gen(10770) },
+  { name: 'Thriller', url: gen(53) },
+  { name: 'Guerra', url: gen(10752) },
+  { name: 'Faroeste', url: gen(37) }
 ]
-
-const requests = {
-  fetchCrimeMovies: `${MOVIE_GENRE}80`,
-  fetchDocumentaryMovies: `${MOVIE_GENRE}99`,
-  fetchDramaMovies: `${MOVIE_GENRE}18`,
-  fetchFamilyMovies: `${MOVIE_GENRE}10751`,
-  fetchFantasyMovies: `${MOVIE_GENRE}14`,
-  fetchHistoryMovies: `${MOVIE_GENRE}36`,
-  fetchTerrorMovies: `${MOVIE_GENRE}27`,
-  fetchMusicMovies: `${MOVIE_GENRE}10402`,
-  fetchMisteryMovies: `${MOVIE_GENRE}9648`,
-  fetchRomanceMovies: `${MOVIE_GENRE}10749`,
-  fetchFictionMovies: `${MOVIE_GENRE}878`,
-  fetchTvMovies: `${MOVIE_GENRE}10770`,
-  fetchThrillerMovies: `${MOVIE_GENRE}53`,
-  fetchWarMovies: `${MOVIE_GENRE}10752`,
-  fetchWesternMovies: `${MOVIE_GENRE}37`
-}
-
-export default requests

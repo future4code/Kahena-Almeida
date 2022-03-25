@@ -34,7 +34,15 @@ function HomePage() {
         {movies.map(movie => {
           return (
             <div key={movie.id} className="CardMovie" value={movie}>
-              <img src={`${base_url}${movie.backdrop_path}`} alt={movie.name} />
+              <div
+                className="ImgCard"
+                style={{
+                  backgroundImage: `url(${base_url}${movie.poster_path})`
+                }}
+              />
+              {/* <img src={`${base_url}${movie.backdrop_path}`} alt={movie.name} /> */}
+              <p className="TextCard1">{movie.title}</p>
+              <p className="TextCard2">{movie.release_date}</p>
             </div>
           )
         })}

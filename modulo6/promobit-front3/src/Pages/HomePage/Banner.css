@@ -1,30 +1,23 @@
 .banner {
-  position: absolute;
-  height: 505px;
-  width: 100%;
+  height: 69.94vh;
   border-top: 7rem;
+  margin-top: 8.58vh;
   object-fit: contain;
   background-color: #2d0c5e;
   box-shadow: 0 0 1em black;
-}
-
-.banner_content {
-  position: relative;
-  margin-top: 141px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1033px;
+  display: flex;
+  align-items: center;
 }
 
 .banner_title {
   font-family: 'Roboto';
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 48px;
   text-align: center;
   margin: auto;
   color: #ffffff;
-  width: 781px;
-  height: 112px;
+  max-width: 781px;
+  min-width: 400px;
 }
 
 .filter {
@@ -37,7 +30,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.9vw;
   text-align: center;
   color: #ffffff;
   margin-bottom: 16px;
