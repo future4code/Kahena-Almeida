@@ -1,33 +1,27 @@
 import React from 'react'
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import styled from 'styled-components'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomePage from './Pages/HomePage/HomePage'
-
-// const AppContainer = styled.div`
-//   * {
-//     margin: 0;
-//     padding: 0;
-//   }
-// `
+// import DetailsPage from './Pages/Details/DetailsPage'
+import Login from './Pages/LoginPage/Login'
 
 function App() {
+  const user = null
+
   return (
     <div>
-      {/* // <Router>
-    //   <AppContainer>
-    //     <Routes> */}
-      {/* <Route path="/login">
-          <LoginPage/>
-          </Route> */}
-      {/* <Route path="/home"> */}
-      <HomePage />
-      {/* </Route> */}
-      {/* <Route path="/details">
-          <DetailsMovie/>
-          </Route> */}
-      {/* </Routes>
-      </AppContainer>
-    </Router> */}
+      <Router>
+        {!user ? (
+          <Login />
+        ) : (
+          <Route path="/">
+            <HomePage />
+          </Route>
+          //{' '}
+          // {/* <Route path="/:id" >
+          //       <DetailsPage />
+          //     </Route> */}
+        )}
+      </Router>
     </div>
   )
 }
