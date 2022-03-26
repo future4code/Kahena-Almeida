@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Login.css'
+import SignupScreen from './SignupScreen'
 
 function Login() {
   const [signIn, setSignIn] = useState(false)
@@ -17,16 +18,24 @@ function Login() {
         <div className="login_gradient" />
       </div>
       <div className="login_body">
-        <h1>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</h1>
-        <h2>Pronto(a) para assistir? Insira seu email e crie sua conta.</h2>
-        <div className="login_input">
-          <form>
-            <input type="email" placeholder="Email" />
-            <button onClick={() => setSignIn(true)} className="login_start">
-              Entrar
-            </button>
-          </form>
-        </div>
+        {signIn ? (
+          <SignupScreen />
+        ) : (
+          <>
+            <h1>
+              Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.
+            </h1>
+            <h2>Pronto(a) para assistir? Insira seu email e crie sua conta.</h2>
+            <div className="login_input">
+              <form>
+                <input type="email" placeholder="Email" />
+                <button onClick={() => setSignIn(true)} className="login_start">
+                  Entrar
+                </button>
+              </form>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

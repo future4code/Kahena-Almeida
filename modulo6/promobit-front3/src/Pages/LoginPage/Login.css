@@ -1,7 +1,7 @@
 .loginScreen {
   position: relative;
   height: 100%;
-  background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/757ab38f-5d08-40bc-b3eb-eaba63ed8203/93c34f94-56c8-40a7-8b2e-b4aac6427977/GB-en-20210125-popsignuptwoweeks-perspective_alpha_website_medium.jpg')
+  background: url('https://assets.nflxext.com/ffe/siteui/vlv3/757ab38f-5d08-40bc-b3eb-eaba63ed8203/93c34f94-56c8-40a7-8b2e-b4aac6427977/GB-en-20210125-popsignuptwoweeks-perspective_alpha_website_medium.jpg')
     center no-repeat;
   background-size: cover;
 }
@@ -50,6 +50,8 @@
   z-index: 1;
   color: #fff;
   padding: 20px;
+  left: 0;
+  right: 0;
 }
 
 .login_body > h1 {
