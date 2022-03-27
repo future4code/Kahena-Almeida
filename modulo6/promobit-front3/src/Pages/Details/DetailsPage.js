@@ -1,48 +1,51 @@
+// import React from 'react'
 import React, { useEffect, useState } from 'react'
-import axios from '../../Components/axios/axios'
+import moviesAPI from '../../services/moviesAPI/moviesAPI'
 import './DetailsPage.css'
-import Nav from './Nav'
-import { useParams } from 'react-router-dom'
+import Nav from '../Details/Nav'
+// import { useParams } from 'react-router-dom'
 
 function DetailsPage() {
-  const fetchUrl = useParams()
+  // const id = useParams()
+  const [movie, setMovie] = useState([])
+  // const [movies, setMovies] = useState([])
 
-  const [movie, setMovie] = useState()
-  const [movies, setMovies] = useState()
-
-  const base_url = 'https://image.tmdb.org/t/p/original/'
+  // const base_url = 'https://image.tmdb.org/t/p/original/'
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(
-        `https://api.themoviedb.org/3/movie/${fetchUrl}?api_key=8ca94a6e5b9435241fde9c723592cd60&language=pt-BR`
+      const request = await moviesAPI.get(
+        `movie/634649?api_key=8ca94a6e5b9435241fde9c723592cd60&language=pt-BR`
       )
       setMovie(request.data.results)
+      console.log(movie, 'movie')
       return request
     }
 
     fetchData()
-  }, [fetchUrl])
+  }, [])
 
-  useEffect(() => {
-    async function alternativeTitles() {
-      const request = await axios.get(
-        `https://api.themoviedb.org/3/movie/${fetchUrl}/alternative_titles?api_key=8ca94a6e5b9435241fde9c723592cd60`
-      )
-      setMovies(request.data.results)
-      return request
-    }
+  // useEffect(() => {
+  //   async function alternativeTitles() {
+  //     const request = await moviesAPI.get(
+  //       `/trending/all/week?api_key=8ca94a6e5b9435241fde9c723592cd60&language=pt-BR`
+  //     )
+  //     setMovies(request.data.results)
+  //     console.log(request.data.results, 'movies')
+  //     return request
+  //   }
 
-    alternativeTitles()
-  }, [fetchUrl])
+  //   alternativeTitles()
+  // }, [])
 
   return (
     <div>
       <Nav />
       <div className="Banner">
-        <h1>{movie.title}</h1>
+        <h1>Jesus amado</h1>
+        {/* <h1>{movie.title}</h1> */}
       </div>
-      <div className="List">
+      {/* <div className="List">
         {movies.map(movie => {
           return (
             <div key={movie.id} className="CardMovie" value={movie}>
@@ -57,7 +60,7 @@ function DetailsPage() {
             </div>
           )
         })}
-      </div>
+      </div> */}
     </div>
   )
 }

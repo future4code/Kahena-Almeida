@@ -11,16 +11,24 @@
 
 .List {
   display: flex;
+  flex-direction: row;
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px;
 }
 
+/* .List::-webkit-scrollbar {
+  display: none;
+} */
+
 .CardMovie {
-  width: 176px;
-  height: 320px;
+  min-width: 176px;
+  min-height: 320px;
+  max-height: 320px;
+  max-width: 176px;
   margin-right: 32px;
   margin-bottom: 48px;
+  object-fit: contain;
 }
 
 .ImgCard {

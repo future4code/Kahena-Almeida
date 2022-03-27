@@ -10,7 +10,7 @@
 }
 
 .nav_contents {
-  position: flex;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -19,15 +19,13 @@
 }
 
 .nav_logo {
-  position: fixed;
   max-width: 184.74px;
   height: 24px;
   left: 112px;
   object-fit: contain;
-  cursor: pointer;
 }
 
-.nav_avatar {
+/* .nav_avatar {
   cursor: pointer;
   border-radius: 50%;
   object-fit: cover;
@@ -35,4 +33,15 @@
   align-items: center;
   right: 35px;
   max-width: 35px;
+} */
+
+.nav_avatar {
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 50px;
+  background-image: url('https://i.pinimg.com/originals/61/54/76/61547625e01d8daf941aae3ffb37f653.png');
+  background-size: 35px 35px;
+  height: 35px;
+  width: 35px;
 }

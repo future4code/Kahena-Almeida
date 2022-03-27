@@ -6,13 +6,9 @@ function SignupScreen() {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
 
-  // const register = e => {
-  //   e.preventDefault()
-  //   auth.createUser()
-  // }
-
-  const signIn = e => {
+  const register = e => {
     e.preventDefault()
+
     auth
       .createUserWithEmailAndPassword(
         emailRef.current.value,
@@ -22,7 +18,22 @@ function SignupScreen() {
         console.log(authUser)
       })
       .catch(error => {
-        console.log(error)
+        alert(error.message)
+      })
+  }
+
+  const signIn = e => {
+    e.preventDefault()
+    auth
+      .signInWithEmailAndPassword(
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+      .then(authUser => {
+        console.log(authUser)
+      })
+      .catch(error => {
+        alert(error.message)
       })
   }
 
@@ -31,10 +42,13 @@ function SignupScreen() {
       <form>
         <h1>Sign In</h1>
         <input ref={emailRef} placeholder="Email" type="email" />
-        <input ref={passwordRef} placeholder="Password" type="password" />
-        <button type="Submit" onClick={signIn}>
-          Entrar
-        </button>
+        <input
+          ref={passwordRef}
+          placeholder="Senha (mínimo 6 caracteres)"
+          type="password"
+        />
+        <button onClick={signIn}>Entrar</button>
+        <button onClick={register}>Cadastrar</button>
       </form>
     </div>
   )
