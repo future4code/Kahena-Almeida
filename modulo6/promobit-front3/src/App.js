@@ -1,27 +1,28 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+// import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomePage from './Pages/HomePage/HomePage'
 // import DetailsPage from './Pages/Details/DetailsPage'
-import Login from './Pages/LoginPage/Login'
+// import Login from './Pages/LoginPage/Login'
 
 function App() {
-  const user = null
+  // const user = null
 
   return (
     <div>
-      <Router>
+      <HomePage />
+      {/* <Router>
         {!user ? (
           <Login />
         ) : (
           <Route path="/">
             <HomePage />
-          </Route>
-          //{' '}
-          // {/* <Route path="/:id" >
-          //       <DetailsPage />
-          //     </Route> */}
-        )}
-      </Router>
+          </Route> 
+        
+           <Route path="/:id" >
+                <DetailsPage />
+              </Route> 
+        
+        </Router> */}
     </div>
   )
 }
