@@ -1,6 +1,6 @@
 import React from 'react'
 import './Banner.css'
-import { genresURL } from '../../Components/axios/Requests'
+import { genresURL } from '../services/axios/Requests'
 
 function Banner({ onClickMovie }) {
   return (

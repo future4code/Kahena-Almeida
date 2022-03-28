@@ -1,44 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+<h1 align="center">Promobir</h1>
 
-## Available Scripts
+<div align="center"><img src="https://img.shields.io/badge/-React.js-blue">  <img src="https://img.shields.io/badge/-Firebase-red">  </div>
 
-In the project directory, you can run:
+<p align="center">
+ <a href="#objetivo">Introdução</a> •
+ <a href="#screenshot">O desafio</a> • 
+ <a href="#funcionalidades">Funcionalidades concluídas</a> •  
+ <a href="#screenshot">ScreenShot</a> •  
+ <a href="#tecnologias">Tecnologias</a>
+</p>
 
-### `npm start`
+## Introdução
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O objetivo do desafio proposto é permitir uma melhor avaliação das minhas habilidades.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## O desafio
 
-### `npm test`
+Usando a API de filmes gratuita [themoviedb](https://developers.themoviedb.org/3/getting-started/introduction) em sua versão 3, devo criar uma listagem dos filmes mais populares do dia, consultando o endpoint [`GET /movie/popular`](https://developers.themoviedb.org/3/movies/get-popular-movies) para realizar a listagem.
+Para garantir que o usuário encontre o filme que está procurando, essa lista deverá ser paginada.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Siga o [layout do figma](https://www.figma.com/file/rM7WPqhLY9ObnGzSCeWLxB/Teste-Front-End) sugerido. Não há necessidade de ser pixel perfect mas respeite a composição, fontes e cores.
 
-### `npm run build`
+<div id="funcionalidades">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Funcionalidades concluídas
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [x] O usuário deve ter acesso a uma listagem dos filmes mais populares do dia
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [x] O usuário deve conseguir paginar a lista para encontrar novos filmes
+</div>
 
-### `npm run eject`
+<div id="screenshot">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## ScreenShot
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  <img src="https://i.postimg.cc/gcfJ8JpD/image.png" />
+</div>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<hr />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<div id="tecnologias">
 
-## Learn More
+## Tecnologias
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Projeto construido com:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **JavaScript**
+- **React.js**
+- **Firebase**
+
+</div>

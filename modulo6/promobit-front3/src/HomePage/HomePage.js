@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from '../../Components/axios/axios'
+import axios from '../services/axios/axios'
 import './HomePage.css'
 import Nav from './Nav'
 import Banner from './Banner'
