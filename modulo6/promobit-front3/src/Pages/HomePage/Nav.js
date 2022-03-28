@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import './Nav.css'
 import { auth } from '../../firebase'
+import { useNavigate } from 'react-router-dom'
 
 function Nav() {
   const [show, handleShow] = useState(true)
-
+  const navigation = useNavigate()
   const transitionNavBar = () => {
     if (window.scrollY > 100) {
       handleShow(false)
     } else {
       handleShow(true)
     }
+  }
+
+  function transition() {
+    auth.signOut()
+    navigation.push(`/login`)
   }
 
   useEffect(() => {
@@ -27,7 +33,7 @@ function Nav() {
           alt="Logo TMDB"
         />
 
-        <button className="nav_avatar" onClick={() => auth.signOut()}></button>
+        <button className="nav_avatar" onClick={transition()}></button>
       </div>
     </div>
   )

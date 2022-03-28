@@ -1,10 +1,12 @@
 import React, { useRef } from 'react'
 import './SignupScreen.css'
 import { auth } from '../../firebase'
+// import { useNavigate } from 'react-router-dom'
 
 function SignupScreen() {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
+  // const navigation = useNavigate()
 
   const register = e => {
     e.preventDefault()
