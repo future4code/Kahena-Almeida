@@ -33,7 +33,7 @@ function Nav() {
           alt="Logo TMDB"
         />
 
-        <button className="nav_avatar" onClick={transition()}></button>
+        <button className="nav_avatar" onClick={transition}></button>
       </div>
     </div>
   )

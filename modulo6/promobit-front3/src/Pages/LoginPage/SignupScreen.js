@@ -1,12 +1,26 @@
 import React, { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './SignupScreen.css'
 import { auth } from '../../firebase'
-// import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { login, logout, selectUser } from '../../features/userSlice'
 
 function SignupScreen() {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
+  const dispatch = useDispatch()
+  let navigate = useNavigate()
   // const navigation = useNavigate()
+
+  const setUserOnStore = user => {
+    dispatch(
+      login({
+        uid: user.uid,
+        email: user.email
+      })
+    )
+    navigate('/')
+  }
 
   const register = e => {
     e.preventDefault()
@@ -17,7 +31,8 @@ function SignupScreen() {
         passwordRef.current.value
       )
       .then(authUser => {
-        console.log(authUser)
+        console.log(authUser.user)
+        setUserOnStore(authUser.user)
       })
       .catch(error => {
         alert(error.message)
@@ -33,6 +48,7 @@ function SignupScreen() {
       )
       .then(authUser => {
         console.log(authUser)
+        setUserOnStore(authUser.user)
       })
       .catch(error => {
         alert(error.message)
