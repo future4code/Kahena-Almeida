@@ -3,14 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import './SignupScreen.css'
 import { auth } from '../../firebase'
 import { useDispatch } from 'react-redux'
-import { login, logout, selectUser } from '../../features/userSlice'
+import { login } from '../../features/userSlice'
 
 function SignupScreen() {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
   const dispatch = useDispatch()
   let navigate = useNavigate()
-  // const navigation = useNavigate()
 
   const setUserOnStore = user => {
     dispatch(

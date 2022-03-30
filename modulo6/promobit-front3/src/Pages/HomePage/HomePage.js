@@ -3,14 +3,13 @@ import moviesAPI from '../../services/moviesAPI/moviesAPI'
 import './HomePage.css'
 import Nav from './Nav'
 import Banner from './Banner'
-// import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
   const [movies, setMovies] = useState([])
   const [fetchUrl, setFetchUrl] = useState(
     'https://api.themoviedb.org/3//trending/all/week?api_key=8ca94a6e5b9435241fde9c723592cd60&language=pt-BR'
   )
-  // const history = useNavigate()
+
   const base_url = 'https://image.tmdb.org/t/p/original/'
 
   useEffect(() => {
@@ -34,12 +33,7 @@ function HomePage() {
       <div className="List">
         {movies.map(movie => {
           return (
-            <div
-              key={movie.id}
-              className="CardMovie"
-              value={movie}
-              // onClick={() => history.push(`/:${movie.id}`)}
-            >
+            <div key={movie.id} className="CardMovie" value={movie}>
               <div
                 className="ImgCard"
                 style={{

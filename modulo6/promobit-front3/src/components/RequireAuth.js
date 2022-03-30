@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { selectUser } from '../features/userSlice'
 
 function RequireAuth({ children }) {
-  // let auth = useAuth();
   let location = useLocation()
   const user = useSelector(selectUser)
 

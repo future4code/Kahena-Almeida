@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './Nav.css'
 import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../features/userSlice'
 
 function Nav() {
   const [show, handleShow] = useState(true)
-  const navigation = useNavigate()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const transitionNavBar = () => {
     if (window.scrollY > 100) {
       handleShow(false)
@@ -14,9 +17,10 @@ function Nav() {
     }
   }
 
-  function transition() {
+  function logoutUser() {
     auth.signOut()
-    navigation.push(`/login`)
+    dispatch(logout())
+    navigate(`/login`)
   }
 
   useEffect(() => {
@@ -33,7 +37,7 @@ function Nav() {
           alt="Logo TMDB"
         />
 
-        <button className="nav_avatar" onClick={transition}></button>
+        <button className="nav_avatar" onClick={logoutUser}></button>
       </div>
     </div>
   )
