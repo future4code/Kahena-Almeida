@@ -7,7 +7,6 @@ const printNumbers = (n: number) => {
 }
 
 //b
-
 const printNumbers = (n: number) => {
   if (n >= 0) {
     console.log(n)
